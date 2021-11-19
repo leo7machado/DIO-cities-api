@@ -19,7 +19,7 @@ public class DistanceResource {
     public DistanceResource(DistanceService service) {
         this.service = service;
     }
-
+    // Pesquisa por distancia dependente de extensao instalada no postgres
     @GetMapping("/by-points")
     public ResponseEntity byPoints(@RequestParam(name = "from") final Long city1,
                                    @RequestParam(name = "to") final Long city2) {
@@ -34,11 +34,5 @@ public class DistanceResource {
         return ResponseEntity.ok().body(service.distanceByCubeInMeters(city1, city2));
     }
 
-    /*@GetMapping("/by-math")
-    public Double byMath(@RequestParam(name = "from") final Long city1,
-                         @RequestParam(name = "to") final Long city2,
-                         @RequestParam final EarthRadius unit) {
-        log.info("byMath");
-        return service.distanceUsingMath(city1, city2, unit);
-    }*/
+
 }
